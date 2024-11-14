@@ -1,7 +1,8 @@
 import React from "react";
+import NavBar from "../_components/navbar";
 
 const SubscriptionPage = () => {
-  return <div>Subscription lero lero</div>;
+  return <NavBar />;
 };
 
 export default SubscriptionPage;

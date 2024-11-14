@@ -3,17 +3,21 @@ import { db } from "../_lib/prisma";
 import { DataTable } from "../_components/ui/data-table";
 import { transactionColumns } from "./_columns";
 import AddTransactionButton from "../_components/add-transaction-button";
+import NavBar from "../_components/navbar";
 
 const TransactionsPage = async () => {
   const transactions = await db.transaction.findMany({});
   return (
-    <div className="space-y-6 p-6">
-      <div className="flex w-full items-center justify-between p-6">
-        <h1 className="text-2xl font-bold">Transações</h1>
+    <>
+      <NavBar />
+      <div className="space-y-6 p-6">
+        <div className="flex w-full items-center justify-between">
+          <h1 className="text-2xl font-bold">Transações</h1>
+        </div>
+        <AddTransactionButton />
+        <DataTable columns={transactionColumns} data={transactions} />
       </div>
-      <AddTransactionButton />
-      <DataTable columns={transactionColumns} data={transactions} />
-    </div>
+    </>
   );
 };
 
